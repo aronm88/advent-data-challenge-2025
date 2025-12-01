@@ -1,0 +1,68 @@
+table RowCountTables
+	lineageTag: bc2544df-d826-481d-90e7-9a46f75d5184
+
+	column Name
+		dataType: string
+		lineageTag: 0490ed02-dda1-4255-8bf2-5cd51e9d9ace
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: string
+		lineageTag: d2b717bd-6f3b-468e-ba49-52d56144f8a8
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column Schema
+		dataType: string
+		lineageTag: bb42412b-dd5a-4642-94fd-ddb4632d86cd
+		summarizeBy: none
+		sourceColumn: Schema
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 82f327ff-4e9d-4e06-b9e5-81bf76e5d068
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kind
+		dataType: string
+		lineageTag: 7daef2d3-d9f8-4399-a0cb-bf426db12b8a
+		summarizeBy: none
+		sourceColumn: Kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column RowCount
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2b1a4f00-395f-4286-a889-27e2158fc93a
+		summarizeBy: sum
+		sourceColumn: RowCount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RowCountTables = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Kind] = "Table")),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "RowCount", each Table.RowCount([Data])),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"RowCount", Int64.Type}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Changed Type", each ([Item] <> "sysdiagrams"))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

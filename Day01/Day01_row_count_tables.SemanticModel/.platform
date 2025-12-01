@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Day01_row_count_tables"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "04bf6139-1329-4d90-9459-19841f79f9f0"
+  }
+}
