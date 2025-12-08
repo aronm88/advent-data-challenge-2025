@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Day04_reffresh_date.SemanticModel"
+    }
+  }
+}

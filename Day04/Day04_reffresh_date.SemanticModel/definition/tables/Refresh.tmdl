@@ -1,0 +1,85 @@
+table Refresh
+	lineageTag: bba99c9a-5806-4bfe-9462-d560cf49831d
+
+	measure Refreshed = MAX('Refresh'[RefreshDateAndTime])
+		lineageTag: a008e549-6eab-4169-9ba3-9d948fee4361
+
+	column RefreshDateTimeUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e49c2632-c557-4c7f-a0ba-40acb991355a
+		summarizeBy: none
+		sourceColumn: RefreshDateTimeUTC
+
+		variation Variation
+			isDefault
+			relationship: 1cd2247a-abce-4cd0-a082-96665a46bc7d
+			defaultHierarchy: LocalDateTable_5b0dc4a7-ccd5-403a-aac5-04e31b43eb32.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: string
+		lineageTag: 2b497aff-34b9-4f6c-a3b2-5b0e665a225c
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c13de22-f5ac-474c-90c0-ddba6483b65f
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 434445c7-7eac-4344-a600-e446d15d3d24
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: ca531a83-3754-4110-b054-195b922938da
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefreshDateAndTime
+		dataType: string
+		lineageTag: ed1d7988-a38a-4d3f-8866-33d9f14d1bf9
+		summarizeBy: none
+		sourceColumn: RefreshDateAndTime
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Refresh = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        {"RefreshDateTimeUTC"},
+				        {{ DateTimeZone.UtcNow() }}
+				    ),
+				    #"Changed Type1" = Table.TransformColumnTypes(Source,{{"RefreshDateTimeUTC", type datetimezone}}),
+				    #"Inserted Day" = Table.AddColumn(#"Changed Type1", "Day", each Date.Day([RefreshDateTimeUTC]), Int64.Type),
+				    #"Inserted Month" = Table.AddColumn(#"Inserted Day", "Month", each Date.Month([RefreshDateTimeUTC]), Int64.Type),
+				    #"Inserted Year" = Table.AddColumn(#"Inserted Month", "Year", each Date.Year([RefreshDateTimeUTC]), Int64.Type),
+				    #"Merged Queries" = Table.NestedJoin(#"Inserted Year", {"Month"}, MonthMap, {"Number"}, "MonthMap", JoinKind.LeftOuter),
+				    #"Expanded MonthMap" = Table.ExpandTableColumn(#"Merged Queries", "MonthMap", {"MonthName"}, {"MonthName"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded MonthMap",{{"Year", type text}, {"Day", type text}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "RefreshDateAndTime", each [Day]&" "&[MonthName]&" "&[Year]&" (UTC)"),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom",{{"RefreshDateAndTime", type text}})
+				in
+				    #"Changed Type2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

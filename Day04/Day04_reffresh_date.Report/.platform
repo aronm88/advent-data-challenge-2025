@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Day04_reffresh_date"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6d07c3dc-7248-4db7-a94e-4414f27a823f"
+  }
+}

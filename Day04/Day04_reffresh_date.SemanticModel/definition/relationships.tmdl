@@ -1,0 +1,11 @@
+relationship 1cd2247a-abce-4cd0-a082-96665a46bc7d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Refresh.RefreshDateTimeUTC
+	toColumn: LocalDateTable_5b0dc4a7-ccd5-403a-aac5-04e31b43eb32.Date
+
+relationship AutoDetected_c4338a75-aad2-44fe-a8ef-bc5cedfb741e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Refresh.MonthName
+	toColumn: MonthMap.MonthName
+

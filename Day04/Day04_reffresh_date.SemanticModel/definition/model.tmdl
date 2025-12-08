@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pl-PL
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["Refresh","MonthMap"]
+
+ref table Refresh
+ref table MonthMap
+ref table DateTableTemplate_527940e8-9bc7-40fd-9c8f-c7335fd9466b
+ref table LocalDateTable_5b0dc4a7-ccd5-403a-aac5-04e31b43eb32
+
+ref cultureInfo en-US
+

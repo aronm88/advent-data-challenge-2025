@@ -1,6 +1,7 @@
 # Advent Data Challenge 2025
 This repository contains my solutions and analyses for the **Advent 2025 Data Challenge** organized by **Dane Są Wszędzie**.  
 Official challenge page: https://www.danesawszedzie.pl/adwent2025/
+Author page: https://www.linkedin.com/in/dominik-szcze%C5%9Bniak-012257153/ 
 
 ---
 

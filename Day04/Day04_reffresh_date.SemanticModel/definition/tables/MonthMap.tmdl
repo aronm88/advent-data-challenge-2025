@@ -1,0 +1,33 @@
+table MonthMap
+	lineageTag: bfb4a3f5-5bc3-4c1f-b748-b57127bebad0
+
+	column Number
+		dataType: int64
+		formatString: 0
+		lineageTag: a1ef5ef0-a49f-4716-96b6-0f2b211768f3
+		summarizeBy: sum
+		sourceColumn: Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 8e5845ca-7857-4fd4-a50d-51800d39dac8
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MonthMap = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfJKzFOK1YlWMgKy3VKTwGxjINs3sQjMNgGyHQsgbFOweCWYbQbSWwrRaw5m54DZFiD1pelgtiWQHZxaAGYbGgA5/sklEA7IZr/8MggHZLVLarJSbCwA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Number = _t, MonthName = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Number", Int64.Type}, {"MonthName", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
