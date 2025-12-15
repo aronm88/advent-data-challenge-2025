@@ -1,0 +1,51 @@
+table DimShift
+	lineageTag: 88d93a82-8411-421a-ab3d-101043c4f091
+
+	column ShiftKey
+		dataType: int64
+		formatString: 0
+		lineageTag: e1b1dc2a-3d56-4507-8442-be0db865b606
+		summarizeBy: none
+		sourceColumn: ShiftKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftName
+		dataType: string
+		lineageTag: 39c9befa-a081-46d9-8e32-b693d11ad699
+		summarizeBy: none
+		sourceColumn: ShiftName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartHour
+		dataType: int64
+		formatString: 0
+		lineageTag: 891bf110-e108-468e-9991-220b99a53d4c
+		summarizeBy: none
+		sourceColumn: StartHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndHour
+		dataType: int64
+		formatString: 0
+		lineageTag: 23e65a38-9be6-45db-bbdc-29f403b8cab8
+		summarizeBy: none
+		sourceColumn: EndHour
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimShift = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_DimShift = Source{[Schema="dbo",Item="DimShift"]}[Data]
+				in
+				    dbo_DimShift
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

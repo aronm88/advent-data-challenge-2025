@@ -1,0 +1,43 @@
+table FactElfTrainingAttendance
+	lineageTag: eb9e7540-d238-4462-98d6-adfb9492e4ab
+
+	column ElfKey
+		dataType: int64
+		formatString: 0
+		lineageTag: a26c00e9-dc54-4437-a04a-c29a22f8b93d
+		summarizeBy: count
+		sourceColumn: ElfKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrainingKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 679bd530-5c75-46bf-819c-fb7b043d44fa
+		summarizeBy: count
+		sourceColumn: TrainingKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 20189a28-0de5-4e2a-b90f-e7b3149a62e0
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactElfTrainingAttendance = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_FactElfTrainingAttendance = Source{[Schema="dbo",Item="FactElfTrainingAttendance"]}[Data]
+				in
+				    dbo_FactElfTrainingAttendance
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

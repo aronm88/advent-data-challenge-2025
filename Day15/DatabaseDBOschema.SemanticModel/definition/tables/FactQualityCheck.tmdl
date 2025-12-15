@@ -1,0 +1,88 @@
+table FactQualityCheck
+	lineageTag: e5b6aed7-4004-4c72-bbfd-ee06824e90cf
+
+	column QualityCheckId
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f4b6076-53ad-4502-8e45-dbe840a16f5a
+		summarizeBy: count
+		sourceColumn: QualityCheckId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionOrderId
+		dataType: int64
+		formatString: 0
+		lineageTag: 15aef604-5a15-4e8a-869d-437272f9c21c
+		summarizeBy: count
+		sourceColumn: ProductionOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 3884918d-6ded-476e-9c7b-dfba55acc06b
+		summarizeBy: none
+		sourceColumn: ToyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElfKey
+		dataType: int64
+		formatString: 0
+		lineageTag: bda05b1c-b0d0-4935-909b-9b17fb9219e2
+		summarizeBy: none
+		sourceColumn: ElfKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CheckDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cd4c253-3c1e-47df-97e7-f3a641aed3c5
+		summarizeBy: count
+		sourceColumn: CheckDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column QualityIssueKey
+		dataType: int64
+		formatString: 0
+		lineageTag: a1bb0db8-c3a1-45ef-a89d-ceff1eb85336
+		summarizeBy: none
+		sourceColumn: QualityIssueKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPassed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: de9ce9dc-a647-4c0f-9c10-673aaef8475f
+		summarizeBy: none
+		sourceColumn: IsPassed
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefectCount
+		dataType: int64
+		formatString: 0
+		lineageTag: a5eba325-96c5-459f-aeb4-98bb6779136d
+		summarizeBy: sum
+		sourceColumn: DefectCount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactQualityCheck = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_FactQualityCheck = Source{[Schema="dbo",Item="FactQualityCheck"]}[Data]
+				in
+				    dbo_FactQualityCheck
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

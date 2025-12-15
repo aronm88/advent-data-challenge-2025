@@ -1,0 +1,243 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 2156.1002948073256
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 270.71338694057971,
+            "y": 319.01031933409507
+          },
+          "nodeIndex": "Bridge_ElfSkill",
+          "nodeLineageTag": "bcb6035f-4009-422f-96d2-ca1608e14096",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1653.0764191910857,
+            "y": 3453.7377102459313
+          },
+          "nodeIndex": "DimChild",
+          "nodeLineageTag": "4305e317-fc63-47c9-af30-55090046bbc2",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3962.3982358841417,
+            "y": 1924.2808777055334
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "19c16c53-5481-4bbb-9ba1-3329cc02dd28",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 589.559565859615,
+            "y": 13.753971326887211
+          },
+          "nodeIndex": "DimElf",
+          "nodeLineageTag": "22ac34ca-d175-4f5a-8051-5b61e6e5bf6e",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1257.4904350955385,
+            "y": 1715.8942298216966
+          },
+          "nodeIndex": "DimQualityIssue",
+          "nodeLineageTag": "2d10c82b-b1ba-4cf3-9616-b3d6947522fd",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1565.49015599557,
+            "y": 3982.9093463314048
+          },
+          "nodeIndex": "DimRegion",
+          "nodeLineageTag": "b59184b3-0801-4557-b2e1-d1c58ebf4b20",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5189.85361404762,
+            "y": 721.7586745067415
+          },
+          "nodeIndex": "DimShift",
+          "nodeLineageTag": "88d93a82-8411-421a-ab3d-101043c4f091",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "DimSkill",
+          "nodeLineageTag": "7a442f5f-7d8b-4e95-be78-cbf3c6a9b6b4",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2020.4780148628352,
+            "y": 1588.6521529095953
+          },
+          "nodeIndex": "DimToy",
+          "nodeLineageTag": "8ebb0676-a82b-4243-abbc-505bdf767ab8",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5423.85361404762,
+            "y": 2028.4546731657024
+          },
+          "nodeIndex": "DimTraining",
+          "nodeLineageTag": "8b2169cd-ba71-406d-839e-171a7c0848d6",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1080.2953030024362,
+            "y": 2901.3943289324898
+          },
+          "nodeIndex": "DimWishChannel",
+          "nodeLineageTag": "a1779496-345e-4c71-814e-312df08d5acb",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3466.2156512166962,
+            "y": 1255.0795088771924
+          },
+          "nodeIndex": "DimWorkshop",
+          "nodeLineageTag": "1fbb16b5-2a23-4a9b-b61a-38e805eac587",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4465.632223498983,
+            "y": 1169.8085524451199
+          },
+          "nodeIndex": "FactElfTime",
+          "nodeLineageTag": "bcad0253-29c9-4a31-8555-c10f377218aa",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4686.6071599023744,
+            "y": 2435.3347459640145
+          },
+          "nodeIndex": "FactElfTrainingAttendance",
+          "nodeLineageTag": "eb9e7540-d238-4462-98d6-adfb9492e4ab",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2742.0001348461628,
+            "y": 1747.0758836114992
+          },
+          "nodeIndex": "FactProductionDailySnapshot",
+          "nodeLineageTag": "b372cf8b-4855-4363-828a-3ee7cfc1a463",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 977.40821255017477,
+            "y": 484.32872164778462
+          },
+          "nodeIndex": "FactQualityCheck",
+          "nodeLineageTag": "e5b6aed7-4004-4c72-bbfd-ee06824e90cf",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1804.4607044307263,
+            "y": 2367.4989109413145
+          },
+          "nodeIndex": "FactWish",
+          "nodeLineageTag": "6e9ecba0-c474-484a-8f36-cae72dda8ba6",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 31.863081771035706,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

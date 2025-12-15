@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "DatabaseDBOschema"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fb7f4cf2-1941-47cd-9b18-02baeaae74ad"
+  }
+}

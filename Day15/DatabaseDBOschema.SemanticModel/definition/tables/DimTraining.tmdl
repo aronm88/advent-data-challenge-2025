@@ -1,0 +1,51 @@
+table DimTraining
+	lineageTag: 8b2169cd-ba71-406d-839e-171a7c0848d6
+
+	column TrainingKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 966a86cc-841e-4f2f-af9e-7152d0668c23
+		summarizeBy: count
+		sourceColumn: TrainingKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrainingName
+		dataType: string
+		lineageTag: edb7d35d-8857-4f8e-b5d9-a54d4b339b3f
+		summarizeBy: none
+		sourceColumn: TrainingName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrainingCategory
+		dataType: string
+		lineageTag: eb6ebb77-16fd-4c63-a0c7-29c3d35d7904
+		summarizeBy: none
+		sourceColumn: TrainingCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column DurationHours
+		dataType: double
+		lineageTag: dfb94042-f099-44ba-afe3-7e68d2e5bd6f
+		summarizeBy: sum
+		sourceColumn: DurationHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimTraining = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_DimTraining = Source{[Schema="dbo",Item="DimTraining"]}[Data]
+				in
+				    dbo_DimTraining
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

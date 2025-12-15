@@ -1,0 +1,52 @@
+table Bridge_ElfSkill
+	lineageTag: bcb6035f-4009-422f-96d2-ca1608e14096
+
+	column ElfKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a512dc7-6d4d-40dd-abed-2c0a797b2367
+		summarizeBy: none
+		sourceColumn: ElfKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SkillKey
+		dataType: int64
+		formatString: 0
+		lineageTag: d9e5f815-a1fa-4d43-a074-fbb7aaf3cf01
+		summarizeBy: none
+		sourceColumn: SkillKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SkillLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: c55f3932-4212-4002-ab5a-1fd4990a6558
+		summarizeBy: sum
+		sourceColumn: SkillLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPrimarySkill
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e5e8187-0eb9-4845-bc43-15645f56622e
+		summarizeBy: none
+		sourceColumn: IsPrimarySkill
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Bridge_ElfSkill = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_Bridge_ElfSkill = Source{[Schema="dbo",Item="Bridge_ElfSkill"]}[Data]
+				in
+				    dbo_Bridge_ElfSkill
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

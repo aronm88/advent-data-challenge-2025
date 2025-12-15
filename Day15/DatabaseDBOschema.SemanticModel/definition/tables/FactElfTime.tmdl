@@ -1,0 +1,72 @@
+table FactElfTime
+	lineageTag: bcad0253-29c9-4a31-8555-c10f377218aa
+
+	column ElfKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 82f69b6e-7dbc-4d5d-8e2a-3760fdbf294d
+		summarizeBy: count
+		sourceColumn: ElfKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f0a79500-b201-475b-bf04-41206ddf52d0
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkshopKey
+		dataType: int64
+		formatString: 0
+		lineageTag: efbbb05b-74bb-46be-a46f-178782903cd4
+		summarizeBy: none
+		sourceColumn: WorkshopKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 166127f7-c7ab-4438-aa9a-7c07bbab55f0
+		summarizeBy: none
+		sourceColumn: ShiftKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkedHours
+		dataType: double
+		lineageTag: 0ae24c98-74dd-4bc9-9e3e-394c22263d21
+		summarizeBy: sum
+		sourceColumn: WorkedHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OvertimeHours
+		dataType: double
+		lineageTag: a6cc1100-ec45-4062-992c-6b3be9ab158f
+		summarizeBy: sum
+		sourceColumn: OvertimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactElfTime = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_FactElfTime = Source{[Schema="dbo",Item="FactElfTime"]}[Data]
+				in
+				    dbo_FactElfTime
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

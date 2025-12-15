@@ -1,0 +1,50 @@
+table DimWorkshop
+	lineageTag: 1fbb16b5-2a23-4a9b-b61a-38e805eac587
+
+	column WorkshopKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 405d856e-b87e-43bf-a32e-3334539bb5b7
+		summarizeBy: none
+		sourceColumn: WorkshopKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkshopName
+		dataType: string
+		lineageTag: ad1236e3-f2e2-4d64-b73f-5d8793d646ae
+		summarizeBy: none
+		sourceColumn: WorkshopName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkshopType
+		dataType: string
+		lineageTag: a3606667-f4d2-4812-98c6-a2471e0e5bef
+		summarizeBy: none
+		sourceColumn: WorkshopType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxDailyCapacity
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fb0cb7d-39ac-4c67-8ec0-8d26afb3d70d
+		summarizeBy: sum
+		sourceColumn: MaxDailyCapacity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimWorkshop = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_DimWorkshop = Source{[Schema="dbo",Item="DimWorkshop"]}[Data]
+				in
+				    dbo_DimWorkshop
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

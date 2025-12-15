@@ -1,0 +1,70 @@
+table FactProductionDailySnapshot
+	lineageTag: b372cf8b-4855-4363-828a-3ee7cfc1a463
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b95dfbb-f517-44c0-9ae3-97f1d6888eac
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkshopKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 431d8a6a-223a-4af1-b6c5-1825123e337d
+		summarizeBy: none
+		sourceColumn: WorkshopKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: db90d958-48f2-4f02-a364-b17cf4ece92b
+		summarizeBy: none
+		sourceColumn: ToyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProducedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: f7890a56-2a88-4c36-ba6c-9e8083a179a4
+		summarizeBy: sum
+		sourceColumn: ProducedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column BacklogQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 025007ea-101c-4e50-a2f5-f0075949c701
+		summarizeBy: sum
+		sourceColumn: BacklogQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsReindeerPowered
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 787c5d8f-cfcf-4537-bea0-21a78ac90b0b
+		summarizeBy: none
+		sourceColumn: IsReindeerPowered
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactProductionDailySnapshot = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_FactProductionDailySnapshot = Source{[Schema="dbo",Item="FactProductionDailySnapshot"]}[Data]
+				in
+				    dbo_FactProductionDailySnapshot
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

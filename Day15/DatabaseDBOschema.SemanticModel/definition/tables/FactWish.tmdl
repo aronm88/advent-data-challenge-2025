@@ -1,0 +1,87 @@
+table FactWish
+	lineageTag: 6e9ecba0-c474-484a-8f36-cae72dda8ba6
+
+	column WishId
+		dataType: int64
+		formatString: 0
+		lineageTag: 00901843-d443-4567-bb86-74eb70194f21
+		summarizeBy: count
+		sourceColumn: WishId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChildKey
+		dataType: int64
+		formatString: 0
+		lineageTag: facd0954-fbdf-4937-aa4f-0f8302bb08c9
+		summarizeBy: none
+		sourceColumn: ChildKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 920d34fe-a400-465a-a6f2-b534f933720b
+		summarizeBy: none
+		sourceColumn: ToyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WishDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: ee873d5a-8eb6-4903-8e32-9f01fe703702
+		summarizeBy: count
+		sourceColumn: WishDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WishChannelKey
+		dataType: int64
+		formatString: 0
+		lineageTag: bd1a6ca6-682b-46d0-b9f8-9a78bd1069c8
+		summarizeBy: none
+		sourceColumn: WishChannelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: int64
+		formatString: 0
+		lineageTag: cbefe78b-d5df-4e98-99a1-584c36ebeab2
+		summarizeBy: sum
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column WishStatus
+		dataType: string
+		lineageTag: d8c91701-21ce-4ca0-9d8a-a3376b68bed0
+		summarizeBy: none
+		sourceColumn: WishStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequestedQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e47186e-8353-42d9-8c6d-2a41d8d7522c
+		summarizeBy: sum
+		sourceColumn: RequestedQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactWish = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_FactWish = Source{[Schema="dbo",Item="FactWish"]}[Data]
+				in
+				    dbo_FactWish
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

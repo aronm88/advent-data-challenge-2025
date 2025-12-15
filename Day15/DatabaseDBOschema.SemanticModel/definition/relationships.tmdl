@@ -1,0 +1,64 @@
+relationship AutoDetected_cfe794db-e683-4900-9d63-451fce1ddbdc
+	fromColumn: Bridge_ElfSkill.ElfKey
+	toColumn: DimElf.ElfKey
+
+relationship AutoDetected_94ddb383-33a1-468f-a865-5e625d0f0791
+	fromColumn: FactQualityCheck.ElfKey
+	toColumn: DimElf.ElfKey
+
+relationship AutoDetected_951ecf19-1f83-4893-b497-3880ce72196a
+	fromColumn: Bridge_ElfSkill.SkillKey
+	toColumn: DimSkill.SkillKey
+
+relationship AutoDetected_cb53bf9f-8ed1-480a-9517-24671b8c2ef8
+	fromColumn: FactWish.ChildKey
+	toColumn: DimChild.ChildKey
+
+relationship AutoDetected_b21f57a8-2a94-4110-b448-b990ef1cf4da
+	fromColumn: DimChild.RegionKey
+	toColumn: DimRegion.RegionKey
+
+relationship AutoDetected_7dfbf729-112f-4b8c-bc29-70098390fba7
+	fromColumn: FactProductionDailySnapshot.DateKey
+	toColumn: DimDate.DateKey
+
+relationship AutoDetected_440ad191-3ff6-4925-ac1b-3faa43df7456
+	fromColumn: FactElfTrainingAttendance.DateKey
+	toColumn: DimDate.DateKey
+
+relationship AutoDetected_2b073269-44fc-4d34-9ecf-39a3cf7abff3
+	fromColumn: FactElfTime.DateKey
+	toColumn: DimDate.DateKey
+
+relationship AutoDetected_1a1b39f5-f002-447d-b441-61f00571407d
+	fromColumn: FactQualityCheck.QualityIssueKey
+	toColumn: DimQualityIssue.QualityIssueKey
+
+relationship AutoDetected_04001d0b-039e-4dbf-a97f-f11defb2b7d8
+	fromColumn: FactElfTime.ShiftKey
+	toColumn: DimShift.ShiftKey
+
+relationship AutoDetected_4f746c1d-c2a9-47e2-bf59-d0a21a879bd6
+	fromColumn: FactWish.ToyKey
+	toColumn: DimToy.ToyKey
+
+relationship AutoDetected_34bd2cf3-a88d-4930-8256-a2a9dddfac2f
+	fromColumn: FactProductionDailySnapshot.ToyKey
+	toColumn: DimToy.ToyKey
+
+relationship AutoDetected_86019f0f-01d4-4835-8f02-4f47e1f632a2
+	fromColumn: FactQualityCheck.ToyKey
+	toColumn: DimToy.ToyKey
+
+relationship AutoDetected_d99a606c-9130-4360-8b75-8777a44dbb09
+	fromColumn: FactProductionDailySnapshot.WorkshopKey
+	toColumn: DimWorkshop.WorkshopKey
+
+relationship AutoDetected_1ddc8ea2-2b98-4b02-9c39-c76d9da59245
+	fromColumn: FactElfTime.WorkshopKey
+	toColumn: DimWorkshop.WorkshopKey
+
+relationship AutoDetected_0f7d5de8-4829-432a-81ac-7895fae8a4d8
+	fromColumn: FactWish.WishChannelKey
+	toColumn: DimWishChannel.WishChannelKey
+

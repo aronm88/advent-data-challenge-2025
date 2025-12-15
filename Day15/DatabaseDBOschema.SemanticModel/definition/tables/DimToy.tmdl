@@ -1,0 +1,77 @@
+table DimToy
+	lineageTag: 8ebb0676-a82b-4243-abbc-505bdf767ab8
+
+	column ToyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: e449a9d1-9bde-4d00-898b-c458de825c58
+		summarizeBy: none
+		sourceColumn: ToyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToyName
+		dataType: string
+		lineageTag: c647a38b-3676-498d-b6d4-8c74c78f895c
+		summarizeBy: none
+		sourceColumn: ToyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToyCategory
+		dataType: string
+		lineageTag: 03e4aa70-81c1-41e3-ab5f-aa47da9b0720
+		summarizeBy: none
+		sourceColumn: ToyCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column DifficultyLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: e068c88f-ab85-484a-9f7d-c570c26c33b1
+		summarizeBy: sum
+		sourceColumn: DifficultyLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column AvgProductionMinutes
+		dataType: int64
+		formatString: 0
+		lineageTag: 68d3ba88-b1a6-4e57-a1fc-d7c656aab687
+		summarizeBy: sum
+		sourceColumn: AvgProductionMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetAgeFrom
+		dataType: int64
+		formatString: 0
+		lineageTag: 69f57b05-7ed0-41f9-8f5a-d7631bc96cbd
+		summarizeBy: sum
+		sourceColumn: TargetAgeFrom
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetAgeTo
+		dataType: int64
+		formatString: 0
+		lineageTag: 2071f128-daa4-4789-a1c0-20ab2dd33c83
+		summarizeBy: sum
+		sourceColumn: TargetAgeTo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimToy = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_DimToy = Source{[Schema="dbo",Item="DimToy"]}[Data]
+				in
+				    dbo_DimToy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

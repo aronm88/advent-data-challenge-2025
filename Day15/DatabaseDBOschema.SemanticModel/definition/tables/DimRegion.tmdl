@@ -1,0 +1,58 @@
+table DimRegion
+	lineageTag: b59184b3-0801-4557-b2e1-d1c58ebf4b20
+
+	column RegionKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ce66282-c1e2-4c95-96c4-6d5901f7e3e1
+		summarizeBy: none
+		sourceColumn: RegionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: fc5a73e7-f1ba-4683-9bae-c9a23e300700
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionName
+		dataType: string
+		lineageTag: 49b8ac6b-559f-4cd7-b2f8-164285a2c785
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeZone
+		dataType: string
+		lineageTag: 3b86feec-3ceb-4b79-bb25-6a2605fd5a9a
+		summarizeBy: none
+		sourceColumn: TimeZone
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRemoteArea
+		dataType: int64
+		formatString: 0
+		lineageTag: 468d1b35-05db-4c93-9a06-b7965941ce25
+		summarizeBy: none
+		sourceColumn: IsRemoteArea
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimRegion = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("advent-sql-server.database.windows.net", "SantaFactoryDb"),
+				    dbo_DimRegion = Source{[Schema="dbo",Item="DimRegion"]}[Data]
+				in
+				    dbo_DimRegion
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

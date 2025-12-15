@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pl-PL
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Bridge_ElfSkill","DimChild","DimDate","DimQualityIssue","DimRegion","DimShift","DimToy","DimWorkshop","DimWishChannel","DimTraining","DimElf","FactWish","FactProductionDailySnapshot","FactElfTrainingAttendance","FactQualityCheck","FactElfTime","DimSkill"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Bridge_ElfSkill
+ref table DimChild
+ref table DimDate
+ref table DimQualityIssue
+ref table DimRegion
+ref table DimShift
+ref table DimToy
+ref table DimWorkshop
+ref table DimWishChannel
+ref table DimTraining
+ref table DimElf
+ref table FactWish
+ref table FactProductionDailySnapshot
+ref table FactElfTrainingAttendance
+ref table FactQualityCheck
+ref table FactElfTime
+ref table DimSkill
+
+ref cultureInfo en-US
+
